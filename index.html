@@ -50,43 +50,36 @@
             </div>
 
             <div style="display:flex;flex-direction:column;gap:2rem">
-                <!-- FAQ Item 1 -->
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">Does Parallax make decisions for me?</h3>
                     <p style="color:var(--gray-300);line-height:1.8">No. Parallax reveals patterns in YOUR decision-making. You still make all decisions. We just show you what you've been blind to - like hiring 3 people with identical profiles who all failed. The AI catches patterns you literally can't see yourself.</p>
                 </div>
 
-                <!-- FAQ Item 2 -->
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">How is this different from AI advice tools?</h3>
                     <p style="color:var(--gray-300);line-height:1.8">We don't give advice. We're a mirror for your thinking. Other tools tell you what to do. Parallax shows you what you're actually doing vs what you think you're doing. It's pattern recognition, not recommendations.</p>
                 </div>
 
-                <!-- FAQ Item 3 -->
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">How many decisions do I need to log before seeing patterns?</h3>
                     <p style="color:var(--gray-300);line-height:1.8">You'll get insights from your first decision, but patterns emerge after 5-10 decisions. The more you log, the smarter the AI becomes at spotting your cognitive blind spots. Most users see their first major "aha moment" within the first week.</p>
                 </div>
 
-                <!-- FAQ Item 4 -->
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">Is my data private and secure?</h3>
                     <p style="color:var(--gray-300);line-height:1.8">Yes. Your decisions are encrypted, never shared, and only accessible by you. We use bank-level security (256-bit encryption). Your data is never used to train AI models or shared with third parties. You can delete everything at any time.</p>
                 </div>
 
-                <!-- FAQ Item 5 -->
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">What happens after my 14-day free trial?</h3>
                     <p style="color:var(--gray-300);line-height:1.8">If you don't cancel, you'll be charged $49/month (Founder) or $99/month (Pro) depending on your tier. No surprises - we'll email you 3 days before trial ends. Cancel anytime with one click. No questions asked.</p>
                 </div>
 
-                <!-- FAQ Item 6 -->
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">Can I use this for my team?</h3>
                     <p style="color:var(--gray-300);line-height:1.8">Yes! Pro tier includes team features. Share decisions with co-founders, get collective pattern insights, see team blind spots. Perfect for leadership teams making high-stakes decisions together.</p>
                 </div>
 
-                <!-- FAQ Item 7 -->
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">What if I don't like it?</h3>
                     <p style="color:var(--gray-300);line-height:1.8">Cancel anytime during the 14-day trial - no charges. After that, cancel with one click from your billing portal. We'll miss you, but no hard feelings. You keep access until the end of your billing period.</p>
@@ -100,26 +93,26 @@
     <div id="dashboard" class="page-section dashboard">
         <div class="dashboard-content">
             <div class="welcome-card">
-                <h1>Welcome, <span id="user-name-display">Founder</span></h1>
-                <p style="font-size:1.3rem;color:var(--gray-400)">Your AI-powered decision intelligence system is ready.</p>
-                <div class="subscription-badge" id="subscription-badge">Free Trial - 14 Days Remaining</div>
+                <h1>Welcome back, <span id="user-name-display">Friend</span></h1>
+                <p style="font-size:1.3rem;color:var(--gray-300);margin-bottom:1rem">Ready to see what you can't see?</p>
+                <div class="subscription-badge" id="subscription-badge">Pro Plan - Active</div>
             </div>
 
-            <div id="success-msg" class="success-banner">
-                <div style="width:36px;height:36px;background:rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem">✓</div>
-                <span>Decision logged! AI is analyzing for cognitive patterns...</span>
-            </div>
-
-            <div class="card">
-                <h2>Log Your Next Decision</h2>
-                <p style="color:var(--gray-400);margin-bottom:2rem;font-size:1.15rem">The AI learns your patterns. Be specific. The more detail you provide, the better the analysis.</p>
-                <textarea id="decision-input" placeholder="Example: Should I hire this VP of Engineering? They have a strong technical background (10 years at FAANG) but limited experience scaling teams from 10 to 50 people. The last 3 VPs I hired had similar profiles and all failed at team building..."></textarea>
-                <button class="cta-primary" onclick="logDecision()">Log Decision</button>
+            <div class="success-banner" id="success-msg">
+                <span style="font-size:1.5rem">✓</span>
+                <span>Decision logged! AI is analyzing for patterns...</span>
             </div>
 
             <div class="card">
-                <h2>Your Past Decisions</h2>
-                <ul id="decisions-list" class="decisions-list">
+                <h2>Log a Decision</h2>
+                <p style="color:var(--gray-400);margin-bottom:2rem;font-size:1.1rem">What decision are you making right now?</p>
+                <textarea id="decision-textarea" placeholder="Example: Deciding whether to hire a senior engineer vs two junior engineers for our new product team..."></textarea>
+                <button class="cta-primary" onclick="logDecision()">Analyze This Decision</button>
+            </div>
+
+            <div class="card">
+                <h2>Your Decision History</h2>
+                <ul class="decisions-list" id="decisions-list">
                     <li style="text-align:center;color:var(--gray-500);padding:3rem">No decisions logged yet. Log your first decision above!</li>
                 </ul>
             </div>
@@ -127,133 +120,96 @@
             <div class="card" id="billing-card" style="display:none">
                 <h2>Subscription & Billing</h2>
                 <div class="billing-info">
-                    <p><strong>Current Plan:</strong> <span id="current-plan">Free Trial</span></p>
+                    <p><strong>Current Plan:</strong> <span id="current-plan">Pro</span></p>
                     <p><strong>Status:</strong> <span id="subscription-status">Active</span></p>
-                    <p id="trial-info" style="color:var(--gold)">Your 14-day free trial is active. No charges until trial ends.</p>
+                    <p id="trial-info" style="color:var(--gold)"><strong>Trial Active:</strong> 14 days remaining</p>
                     <button class="manage-billing-btn" onclick="manageBilling()">Manage Billing</button>
-                    <button class="manage-billing-btn" onclick="upgradePlan()" id="upgrade-btn">Upgrade Plan</button>
                 </div>
             </div>
+
+            <button class="manage-billing-btn" id="upgrade-btn" style="display:none" onclick="openSignup('Pro')">Upgrade to Pro</button>
         </div>
     </div>
 
-    <!-- Signup Modal -->
-    <div id="signupModal" class="modal">
+    <!-- Sign Up Modal -->
+    <div class="modal" id="signupModal">
         <div class="modal-content">
-            <h3>Start Your Trial</h3>
-            <p style="color:var(--gray-400);margin-bottom:3rem;line-height:1.7;font-size:1.15rem">Get 14 days free on <strong><span id="modal-tier-name">Pro</span></strong> tier. Then $<span id="modal-price">99</span>/month. Cancel anytime.</p>
+            <h3>Start Your Free Trial</h3>
+            <p style="color:var(--gray-400);margin-bottom:2.5rem;font-size:1.1rem"><span id="modal-tier-name">Pro</span> plan • $<span id="modal-price">99</span>/month • 14-day free trial</p>
             
-            <!-- Google Sign-In Button -->
             <button class="google-signin-btn" onclick="signInWithGoogle()">
-                <svg width="18" height="18" viewBox="0 0 18 18" style="margin-right:12px">
-                    <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
-                    <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
-                    <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"/>
-                    <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
-                </svg>
+                <svg style="width:20px;height:20px;margin-right:10px" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
                 Continue with Google
             </button>
             
-            <div style="display:flex;align-items:center;margin:2rem 0;gap:1rem">
-                <div style="flex:1;height:1px;background:rgba(255,255,255,0.1)"></div>
-                <span style="color:var(--gray-500);font-size:0.9rem">OR</span>
-                <div style="flex:1;height:1px;background:rgba(255,255,255,0.1)"></div>
-            </div>
+            <div style="text-align:center;margin:2rem 0;color:var(--gray-500);font-size:.95rem">OR</div>
             
             <input type="text" id="signup-name" placeholder="Full name">
-            <div id="name-error" class="error-message">Please enter your name</div>
+            <div class="error-message" id="name-error">Please enter your name</div>
             
             <input type="email" id="signup-email" placeholder="Email address">
-            <div id="email-error" class="error-message">Please enter a valid email address</div>
-            
-            <p style="color:var(--gray-500);font-size:0.9rem;margin-bottom:2rem">We'll send you a magic link - no password needed!</p>
+            <div class="error-message" id="email-error">Please enter a valid email</div>
             
             <div class="modal-buttons">
                 <button class="secondary" onclick="closeModal()">Cancel</button>
-                <button class="primary" id="modal-submit-btn" onclick="submitSignup()">
-                    <span id="modal-submit-text">Send Magic Link</span>
-                </button>
+                <button class="primary" id="modal-submit-btn" onclick="submitSignup()"><span id="modal-submit-text">Send Magic Link</span></button>
             </div>
             
-            <p style="text-align:center;margin-top:2rem;color:var(--gray-500)">
+            <p style="text-align:center;margin-top:2rem;color:var(--gray-500);font-size:.9rem">
                 Already have an account? <a href="#" onclick="showLogin(event)" style="color:var(--gold)">Log in</a>
             </p>
         </div>
     </div>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="modal">
+    <div class="modal" id="loginModal">
         <div class="modal-content">
             <h3>Welcome Back</h3>
-            <p style="color:var(--gray-400);margin-bottom:3rem;line-height:1.7;font-size:1.15rem">Log in to continue upgrading your thinking.</p>
+            <p style="color:var(--gray-400);margin-bottom:2.5rem">Log in to continue seeing your blind spots</p>
             
-            <!-- Google Sign-In Button -->
             <button class="google-signin-btn" onclick="signInWithGoogle()">
-                <svg width="18" height="18" viewBox="0 0 18 18" style="margin-right:12px">
-                    <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
-                    <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
-                    <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"/>
-                    <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
-                </svg>
+                <svg style="width:20px;height:20px;margin-right:10px" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
                 Continue with Google
             </button>
             
-            <div style="display:flex;align-items:center;margin:2rem 0;gap:1rem">
-                <div style="flex:1;height:1px;background:rgba(255,255,255,0.1)"></div>
-                <span style="color:var(--gray-500);font-size:0.9rem">OR</span>
-                <div style="flex:1;height:1px;background:rgba(255,255,255,0.1)"></div>
-            </div>
+            <div style="text-align:center;margin:2rem 0;color:var(--gray-500);font-size:.95rem">OR</div>
             
             <input type="email" id="login-email" placeholder="Email address">
-            <div id="login-email-error" class="error-message">Please enter your email</div>
-            
-            <p style="color:var(--gray-500);font-size:0.9rem;margin-bottom:2rem">We'll send you a magic link to log in</p>
+            <div class="error-message" id="login-error">Please enter a valid email</div>
             
             <div class="modal-buttons">
                 <button class="secondary" onclick="closeLoginModal()">Cancel</button>
-                <button class="primary" id="login-submit-btn" onclick="submitLogin()">
-                    <span id="login-submit-text">Send Magic Link</span>
-                </button>
+                <button class="primary" id="login-submit-btn" onclick="submitLogin()"><span id="login-submit-text">Send Magic Link</span></button>
             </div>
             
-            <p style="text-align:center;margin-top:2rem;color:var(--gray-500)">
+            <p style="text-align:center;margin-top:2rem;color:var(--gray-500);font-size:.9rem">
                 Don't have an account? <a href="#" onclick="showSignup(event)" style="color:var(--gold)">Sign up</a>
             </p>
         </div>
     </div>
 
     <script>
-        // ============================================
-        // CONFIGURATION - REPLACE THESE VALUES
-        // ============================================
-        const SUPABASE_URL = 'https://tfnzxxemynnsahohyykt.supabase.co'
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmbnp4eGVteW5uc2Fob2h5eWt0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzkwMTYsImV4cCI6MjA4NzU1NTAxNn0.c5iHbU6CcL9wA2pDRXIi2ztOKkZ4e3Cht3ltbJ9tcOk
-'
-        const STRIPE_PUBLISHABLE_KEY = 'pk_test_51SxEqzFf06z0bgUa4DucfEgGvCERalHd8cj2p1tCRoktcNjxBXlQH21gPRUKCWpKWJyywWxxJy2lOjrzUH0p8GYk00LvmRKQVx'
+        const SUPABASE_URL = 'https://tfnzxxemynsahohyykt.supabase.co'
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmbnp4eGVteW5uc2Fob2h5eWt0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzkwMTYsImV4cCI6MjA4NzU1NTAxNn0.c5iHbU6CcL9wA2pDRXIi2ztOKkZ4e3Cht3ltbJ9tcOk'
+        const STRIPE_PUBLISHABLE_KEY = 'pk_test_51SxEqzF06z0bgUa4DucfEgGvCERalW48cj2p1tcRoKtcNJxBXlQM2JgPRUKCM'
         
-        // Stripe Price IDs (get from Stripe Dashboard)
         const STRIPE_PRICES = {
             'Founder': {
-                monthly: 'price_1T6CXLFf06z0bgUayBrfGAga'   // $49/mo
+                monthly: 'price_1T6CXLFf06z0bgUayBrfGAga'
             },
             'Pro': {
-                monthly: 'price_1T6CaBFf06z0bgUa0ylBqX8k'       // $99/mo
+                monthly: 'price_1T6CaBFf06z0bgUaybtBqXBM'
             }
         }
         
-        // Initialize clients
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
         const stripe = Stripe(STRIPE_PUBLISHABLE_KEY)
         
-        // Global state
         let currentUser = null
         let currentTier = 'Pro'
         let userProfile = null
         let userDecisions = []
         
-        // ============================================
-        // INITIALIZATION
-        // ============================================
         async function init() {
             const { data: { session } } = await supabase.auth.getSession()
             
@@ -282,7 +238,6 @@
         async function ensureProfileExists() {
             if (!currentUser) return
             
-            // Check if profile exists
             const { data: existingProfile } = await supabase
                 .from('user_profiles')
                 .select('*')
@@ -290,7 +245,6 @@
                 .single()
             
             if (!existingProfile) {
-                // Create profile for OAuth/magic link users
                 const name = currentUser.user_metadata?.name || 
                             currentUser.user_metadata?.full_name || 
                             currentUser.email?.split('@')[0] ||
@@ -310,7 +264,6 @@
         async function loadUserData() {
             if (!currentUser) return
             
-            // Load user profile
             const { data: profile } = await supabase
                 .from('user_profiles')
                 .select('*')
@@ -379,11 +332,6 @@
             `).join('')
         }
         
-        // ============================================
-        // AUTHENTICATION
-        // ============================================
-        
-        // Google Sign-In
         async function signInWithGoogle() {
             try {
                 const { data, error } = await supabase.auth.signInWithOAuth({
@@ -394,8 +342,6 @@
                 })
                 
                 if (error) throw error
-                
-                // Google redirects automatically
                 
             } catch (error) {
                 console.error('Google sign-in error:', error)
@@ -428,7 +374,6 @@
             buttonText.innerHTML = '<span class="loading-spinner"></span>Sending magic link...'
             
             try {
-                // Send magic link for passwordless login
                 const { error } = await supabase.auth.signInWithOtp({
                     email: email,
                     options: {
@@ -443,8 +388,6 @@
                 if (error) throw error
                 
                 closeModal()
-                
-                // Show success message
                 alert('✅ Check your email! We sent you a magic link to sign in. (Check spam folder if you don\'t see it)')
                 
             } catch (error) {
@@ -461,10 +404,10 @@
             const button = document.getElementById('login-submit-btn')
             const buttonText = document.getElementById('login-submit-text')
             
-            document.getElementById('login-email-error').classList.remove('show')
+            document.getElementById('login-error').classList.remove('show')
             
-            if (!email) {
-                document.getElementById('login-email-error').classList.add('show')
+            if (!email || !validateEmail(email)) {
+                document.getElementById('login-error').classList.add('show')
                 return
             }
             
@@ -472,7 +415,6 @@
             buttonText.innerHTML = '<span class="loading-spinner"></span>Sending magic link...'
             
             try {
-                // Send magic link
                 const { error } = await supabase.auth.signInWithOtp({
                     email: email,
                     options: {
@@ -483,13 +425,11 @@
                 if (error) throw error
                 
                 closeLoginModal()
-                
-                // Show success message
-                alert('✅ Check your email! We sent you a magic link to sign in. (Check spam folder if you don\'t see it)')
+                alert('✅ Check your email! We sent you a magic link to sign in.')
                 
             } catch (error) {
                 console.error('Login error:', error)
-                alert(error.message || 'Error logging in. Please check your email.')
+                alert(error.message || 'Error logging in. Please try again.')
             }
             
             button.disabled = false
@@ -499,51 +439,14 @@
         async function logout() {
             await supabase.auth.signOut()
             currentUser = null
+            userProfile = null
             userDecisions = []
             showLanding()
         }
         
-        // ============================================
-        // STRIPE PAYMENT INTEGRATION
-        // ============================================
-        async function createCheckoutSession(userId, tier, billingPeriod) {
-            try {
-                const priceId = STRIPE_PRICES[tier][billingPeriod]
-                
-                const { data: { session } } = await supabase.auth.getSession()
-                
-                const response = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${session.access_token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        price_id: priceId,
-                        user_id: userId,
-                        tier: tier
-                    })
-                })
-                
-                const { sessionId } = await response.json()
-                
-                // Redirect to Stripe Checkout
-                const { error } = await stripe.redirectToCheckout({ sessionId })
-                
-                if (error) {
-                    console.error('Stripe redirect error:', error)
-                    alert('Error starting checkout. Please try again.')
-                }
-                
-            } catch (error) {
-                console.error('Checkout error:', error)
-                alert('Error creating checkout session.')
-            }
-        }
-        
         async function manageBilling() {
-            if (!userProfile || !userProfile.stripe_customer_id) {
-                alert('No billing information found.')
+            if (!userProfile?.stripe_customer_id) {
+                alert('No billing information found')
                 return
             }
             
@@ -562,27 +465,22 @@
                 })
                 
                 const { url } = await response.json()
-                window.location.href = url
                 
+                if (url) {
+                    window.location.href = url
+                }
             } catch (error) {
-                console.error('Portal error:', error)
-                alert('Error opening billing portal.')
+                console.error('Billing portal error:', error)
+                alert('Error opening billing portal. Please try again.')
             }
         }
         
-        async function upgradePlan() {
-            openSignup('Pro')
-        }
-        
-        // ============================================
-        // DECISION LOGGING
-        // ============================================
         async function logDecision() {
-            const textarea = document.getElementById('decision-input')
+            const textarea = document.getElementById('decision-textarea')
             const decisionText = textarea.value.trim()
             
-            if (!decisionText || decisionText.length < 20) {
-                alert('Please provide more detail for accurate AI analysis (at least 20 characters)')
+            if (!decisionText) {
+                alert('Please enter a decision first')
                 return
             }
             
@@ -654,9 +552,6 @@
             }
         }
         
-        // ============================================
-        // UI FUNCTIONS
-        // ============================================
         function showLanding() {
             document.getElementById('landing').classList.add('active')
             document.getElementById('dashboard').classList.remove('active')
@@ -697,7 +592,6 @@
             document.getElementById('signupModal').classList.remove('active')
             document.getElementById('signup-name').value = ''
             document.getElementById('signup-email').value = ''
-            document.getElementById('signup-password').value = ''
         }
         
         function showLogin(e) {
@@ -710,7 +604,6 @@
         function closeLoginModal() {
             document.getElementById('loginModal').classList.remove('active')
             document.getElementById('login-email').value = ''
-            document.getElementById('login-password').value = ''
         }
         
         function showSignup(e) {
@@ -730,18 +623,8 @@
         }
         
         window.addEventListener('load', init)
-        
-        console.log('%c💎 DECISIONOS - 100% COMPLETE', 'color: #D4AF37; font-size: 20px; font-weight: bold; background: #000; padding: 10px 20px')
-        console.log('✅ Backend: Supabase')
-        console.log('✅ AI: Anthropic Claude')
-        console.log('✅ Payments: Stripe')
-        console.log('✅ Auth: Working')
-        console.log('✅ Database: Working')
-        console.log('✅ Subscriptions: Working')
-        console.log('🚀 READY TO LAUNCH')
     </script>
     
-    <!-- Footer -->
     <footer style="background:var(--black);border-top:1px solid rgba(212,175,55,.2);padding:4rem 2rem;margin-top:0">
         <div style="max-width:1200px;margin:0 auto">
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-bottom:3rem">
