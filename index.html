@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parallax — AI Pattern Recognition That Reveals Your Blind Spots</title>
     
-    <!-- Supabase Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <!-- Stripe.js -->
     <script src="https://js.stripe.com/v3/"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +24,6 @@
         </div>
     </nav>
     
-    <!-- Landing Page -->
     <div id="landing" class="page-section active">
         <section class="hero">
             <div class="hero-content">
@@ -41,7 +37,6 @@
             </div>
         </section>
 
-    <!-- FAQ Section -->
     <section style="padding:10rem 2rem;background:var(--black);border-top:1px solid rgba(212,175,55,.2)">
         <div style="max-width:900px;margin:0 auto">
             <div style="text-align:center;margin-bottom:6rem">
@@ -89,7 +84,6 @@
     </section>
     </div>
 
-    <!-- Dashboard -->
     <div id="dashboard" class="page-section dashboard">
         <div class="dashboard-content">
             <div class="welcome-card">
@@ -131,7 +125,6 @@
         </div>
     </div>
 
-    <!-- Sign Up Modal -->
     <div class="modal" id="signupModal">
         <div class="modal-content">
             <h3>Start Your Free Trial</h3>
@@ -161,7 +154,6 @@
         </div>
     </div>
 
-    <!-- Login Modal -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <h3>Welcome Back</h3>
@@ -189,440 +181,276 @@
     </div>
 
     <script>
-        const SUPABASE_URL = 'https://tfnzxxemynsahohyykt.supabase.co'
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmbnp4eGVteW5uc2Fob2h5eWt0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzkwMTYsImV4cCI6MjA4NzU1NTAxNn0.c5iHbU6CcL9wA2pDRXIi2ztOKkZ4e3Cht3ltbJ9tcOk'
-        const STRIPE_PUBLISHABLE_KEY = 'pk_test_51SxEqzF06z0bgUa4DucfEgGvCERalW48cj2p1tcRoKtcNJxBXlQM2JgPRUKCM'
+        const SUPABASE_URL = 'https://tfnzxxemynsahohyykt.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmbnp4eGVteW5uc2Fob2h5eWt0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzkwMTYsImV4cCI6MjA4NzU1NTAxNn0.c5iHbU6CcL9wA2pDRXIi2ztOKkZ4e3Cht3ltbJ9tcOk';
+        const STRIPE_PUBLISHABLE_KEY = 'pk_test_51SxEqzF06z0bgUa4DucfEgGvCERalW48cj2p1tcRoKtcNJxBXlQM2JgPRUKCM';
         
         const STRIPE_PRICES = {
-            'Founder': {
-                monthly: 'price_1T6CXLFf06z0bgUayBrfGAga'
-            },
-            'Pro': {
-                monthly: 'price_1T6CaBFf06z0bgUaybtBqXBM'
-            }
-        }
+            'Founder': { monthly: 'price_1T6CXLFf06z0bgUayBrfGAga' },
+            'Pro': { monthly: 'price_1T6CaBFf06z0bgUaybtBqXBM' }
+        };
         
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-        const stripe = Stripe(STRIPE_PUBLISHABLE_KEY)
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const stripeClient = Stripe(STRIPE_PUBLISHABLE_KEY);
         
-        let currentUser = null
-        let currentTier = 'Pro'
-        let userProfile = null
-        let userDecisions = []
+        let currentUser = null;
+        let currentTier = 'Pro';
+        let userProfile = null;
+        let userDecisions = [];
         
         async function init() {
-            const { data: { session } } = await supabase.auth.getSession()
-            
+            const { data: { session } } = await supabaseClient.auth.getSession();
             if (session) {
-                currentUser = session.user
-                await ensureProfileExists()
-                await loadUserData()
-                showDashboard()
+                currentUser = session.user;
+                await ensureProfileExists();
+                await loadUserData();
+                showDashboard();
             } else {
-                showLanding()
+                showLanding();
             }
-            
-            supabase.auth.onAuthStateChange(async (event, session) => {
+            supabaseClient.auth.onAuthStateChange(async (event, session) => {
                 if (event === 'SIGNED_IN') {
-                    currentUser = session.user
-                    await ensureProfileExists()
-                    await loadUserData()
-                    showDashboard()
+                    currentUser = session.user;
+                    await ensureProfileExists();
+                    await loadUserData();
+                    showDashboard();
                 } else if (event === 'SIGNED_OUT') {
-                    currentUser = null
-                    showLanding()
+                    currentUser = null;
+                    showLanding();
                 }
-            })
+            });
         }
         
         async function ensureProfileExists() {
-            if (!currentUser) return
-            
-            const { data: existingProfile } = await supabase
-                .from('user_profiles')
-                .select('*')
-                .eq('id', currentUser.id)
-                .single()
-            
+            if (!currentUser) return;
+            const { data: existingProfile } = await supabaseClient.from('user_profiles').select('*').eq('id', currentUser.id).single();
             if (!existingProfile) {
-                const name = currentUser.user_metadata?.name || 
-                            currentUser.user_metadata?.full_name || 
-                            currentUser.email?.split('@')[0] ||
-                            'User'
-                
-                await supabase
-                    .from('user_profiles')
-                    .insert([{
-                        id: currentUser.id,
-                        name: name,
-                        tier: currentTier || 'Pro',
-                        subscription_status: 'trialing'
-                    }])
+                const name = currentUser.user_metadata?.name || currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'User';
+                await supabaseClient.from('user_profiles').insert([{ id: currentUser.id, name: name, tier: currentTier || 'Pro', subscription_status: 'trialing' }]);
             }
         }
         
         async function loadUserData() {
-            if (!currentUser) return
-            
-            const { data: profile } = await supabase
-                .from('user_profiles')
-                .select('*')
-                .eq('id', currentUser.id)
-                .single()
-            
+            if (!currentUser) return;
+            const { data: profile } = await supabaseClient.from('user_profiles').select('*').eq('id', currentUser.id).single();
             if (profile) {
-                userProfile = profile
-                document.getElementById('user-name-display').textContent = profile.name
-                updateSubscriptionBadge(profile)
+                userProfile = profile;
+                document.getElementById('user-name-display').textContent = profile.name;
+                updateSubscriptionBadge(profile);
             }
-            
-            await loadDecisions()
+            await loadDecisions();
         }
         
         function updateSubscriptionBadge(profile) {
-            const badge = document.getElementById('subscription-badge')
-            const billingCard = document.getElementById('billing-card')
-            const currentPlanEl = document.getElementById('current-plan')
-            const statusEl = document.getElementById('subscription-status')
-            
+            const badge = document.getElementById('subscription-badge');
+            const billingCard = document.getElementById('billing-card');
+            const currentPlanEl = document.getElementById('current-plan');
+            const statusEl = document.getElementById('subscription-status');
             if (profile.subscription_status === 'active') {
-                badge.textContent = `${profile.tier} Plan - Active`
-                badge.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
-                billingCard.style.display = 'block'
-                currentPlanEl.textContent = profile.tier
-                statusEl.textContent = 'Active'
-                document.getElementById('trial-info').style.display = 'none'
+                badge.textContent = `${profile.tier} Plan - Active`;
+                badge.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                billingCard.style.display = 'block';
+                currentPlanEl.textContent = profile.tier;
+                statusEl.textContent = 'Active';
+                document.getElementById('trial-info').style.display = 'none';
             } else if (profile.subscription_status === 'trialing') {
-                badge.textContent = 'Free Trial - 14 Days Remaining'
-                billingCard.style.display = 'block'
-                currentPlanEl.textContent = `${profile.tier} (Trial)`
-                statusEl.textContent = 'Trial Active'
+                badge.textContent = 'Free Trial - 14 Days Remaining';
+                billingCard.style.display = 'block';
+                currentPlanEl.textContent = `${profile.tier} (Trial)`;
+                statusEl.textContent = 'Trial Active';
             } else {
-                badge.textContent = 'Free Plan'
-                badge.style.background = 'rgba(255,255,255,0.1)'
-                document.getElementById('upgrade-btn').style.display = 'inline-block'
+                badge.textContent = 'Free Plan';
+                badge.style.background = 'rgba(255,255,255,0.1)';
+                document.getElementById('upgrade-btn').style.display = 'inline-block';
             }
         }
         
         async function loadDecisions() {
-            const { data } = await supabase
-                .from('decisions')
-                .select('*')
-                .eq('user_id', currentUser.id)
-                .order('created_at', { ascending: false })
-            
-            userDecisions = data || []
-            renderDecisions()
+            const { data } = await supabaseClient.from('decisions').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false });
+            userDecisions = data || [];
+            renderDecisions();
         }
         
         function renderDecisions() {
-            const list = document.getElementById('decisions-list')
-            
+            const list = document.getElementById('decisions-list');
             if (userDecisions.length === 0) {
-                list.innerHTML = '<li style="text-align:center;color:var(--gray-500);padding:3rem">No decisions logged yet. Log your first decision above!</li>'
-                return
+                list.innerHTML = '<li style="text-align:center;color:var(--gray-500);padding:3rem">No decisions logged yet. Log your first decision above!</li>';
+                return;
             }
-            
-            list.innerHTML = userDecisions.map(decision => `
-                <li class="decision-item">
-                    <div class="decision-date">${new Date(decision.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div>
-                    <div class="decision-text">${escapeHtml(decision.decision_text)}</div>
-                    ${decision.ai_analysis ? `<div class="decision-analysis">${escapeHtml(decision.ai_analysis)}</div>` : '<div style="color:var(--gray-500);font-style:italic">Analyzing...</div>'}
-                </li>
-            `).join('')
+            list.innerHTML = userDecisions.map(decision => `<li class="decision-item"><div class="decision-date">${new Date(decision.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div><div class="decision-text">${escapeHtml(decision.decision_text)}</div>${decision.ai_analysis ? `<div class="decision-analysis">${escapeHtml(decision.ai_analysis)}</div>` : '<div style="color:var(--gray-500);font-style:italic">Analyzing...</div>'}</li>`).join('');
         }
         
         async function signInWithGoogle() {
             try {
-                const { data, error } = await supabase.auth.signInWithOAuth({
-                    provider: 'google',
-                    options: {
-                        redirectTo: window.location.origin
-                    }
-                })
-                
-                if (error) throw error
-                
+                const { error } = await supabaseClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin } });
+                if (error) throw error;
             } catch (error) {
-                console.error('Google sign-in error:', error)
-                alert('Error signing in with Google. Please try again.')
+                console.error('Google sign-in error:', error);
+                alert('Error signing in with Google. Please try again.');
             }
         }
         
         async function submitSignup() {
-            const name = document.getElementById('signup-name').value.trim()
-            const email = document.getElementById('signup-email').value.trim()
-            const button = document.getElementById('modal-submit-btn')
-            const buttonText = document.getElementById('modal-submit-text')
-            
-            document.getElementById('name-error').classList.remove('show')
-            document.getElementById('email-error').classList.remove('show')
-            
-            let hasError = false
-            if (!name || name.length < 2) {
-                document.getElementById('name-error').classList.add('show')
-                hasError = true
-            }
-            if (!email || !validateEmail(email)) {
-                document.getElementById('email-error').classList.add('show')
-                hasError = true
-            }
-            
-            if (hasError) return
-            
-            button.disabled = true
-            buttonText.innerHTML = '<span class="loading-spinner"></span>Sending magic link...'
-            
+            const name = document.getElementById('signup-name').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const button = document.getElementById('modal-submit-btn');
+            const buttonText = document.getElementById('modal-submit-text');
+            document.getElementById('name-error').classList.remove('show');
+            document.getElementById('email-error').classList.remove('show');
+            let hasError = false;
+            if (!name || name.length < 2) { document.getElementById('name-error').classList.add('show'); hasError = true; }
+            if (!email || !validateEmail(email)) { document.getElementById('email-error').classList.add('show'); hasError = true; }
+            if (hasError) return;
+            button.disabled = true;
+            buttonText.innerHTML = '<span class="loading-spinner"></span>Sending magic link...';
             try {
-                const { error } = await supabase.auth.signInWithOtp({
-                    email: email,
-                    options: {
-                        data: {
-                            name: name,
-                            tier: currentTier
-                        },
-                        emailRedirectTo: window.location.origin
-                    }
-                })
-                
-                if (error) throw error
-                
-                closeModal()
-                alert('✅ Check your email! We sent you a magic link to sign in. (Check spam folder if you don\'t see it)')
-                
+                const { error } = await supabaseClient.auth.signInWithOtp({ email: email, options: { data: { name: name, tier: currentTier }, emailRedirectTo: window.location.origin } });
+                if (error) throw error;
+                closeModal();
+                alert('✅ Check your email! We sent you a magic link to sign in. (Check spam folder if you don\'t see it)');
             } catch (error) {
-                console.error('Signup error:', error)
-                alert(error.message || 'Error creating account. Please try again.')
+                console.error('Signup error:', error);
+                alert(error.message || 'Error creating account. Please try again.');
             }
-            
-            button.disabled = false
-            buttonText.textContent = 'Send Magic Link'
+            button.disabled = false;
+            buttonText.textContent = 'Send Magic Link';
         }
         
         async function submitLogin() {
-            const email = document.getElementById('login-email').value.trim()
-            const button = document.getElementById('login-submit-btn')
-            const buttonText = document.getElementById('login-submit-text')
-            
-            document.getElementById('login-error').classList.remove('show')
-            
-            if (!email || !validateEmail(email)) {
-                document.getElementById('login-error').classList.add('show')
-                return
-            }
-            
-            button.disabled = true
-            buttonText.innerHTML = '<span class="loading-spinner"></span>Sending magic link...'
-            
+            const email = document.getElementById('login-email').value.trim();
+            const button = document.getElementById('login-submit-btn');
+            const buttonText = document.getElementById('login-submit-text');
+            document.getElementById('login-error').classList.remove('show');
+            if (!email || !validateEmail(email)) { document.getElementById('login-error').classList.add('show'); return; }
+            button.disabled = true;
+            buttonText.innerHTML = '<span class="loading-spinner"></span>Sending magic link...';
             try {
-                const { error } = await supabase.auth.signInWithOtp({
-                    email: email,
-                    options: {
-                        emailRedirectTo: window.location.origin
-                    }
-                })
-                
-                if (error) throw error
-                
-                closeLoginModal()
-                alert('✅ Check your email! We sent you a magic link to sign in.')
-                
+                const { error } = await supabaseClient.auth.signInWithOtp({ email: email, options: { emailRedirectTo: window.location.origin } });
+                if (error) throw error;
+                closeLoginModal();
+                alert('✅ Check your email! We sent you a magic link to sign in.');
             } catch (error) {
-                console.error('Login error:', error)
-                alert(error.message || 'Error logging in. Please try again.')
+                console.error('Login error:', error);
+                alert(error.message || 'Error logging in. Please try again.');
             }
-            
-            button.disabled = false
-            buttonText.textContent = 'Send Magic Link'
+            button.disabled = false;
+            buttonText.textContent = 'Send Magic Link';
         }
         
         async function logout() {
-            await supabase.auth.signOut()
-            currentUser = null
-            userProfile = null
-            userDecisions = []
-            showLanding()
+            await supabaseClient.auth.signOut();
+            currentUser = null;
+            userProfile = null;
+            userDecisions = [];
+            showLanding();
         }
         
         async function manageBilling() {
-            if (!userProfile?.stripe_customer_id) {
-                alert('No billing information found')
-                return
-            }
-            
+            if (!userProfile?.stripe_customer_id) { alert('No billing information found'); return; }
             try {
-                const { data: { session } } = await supabase.auth.getSession()
-                
-                const response = await fetch(`${SUPABASE_URL}/functions/v1/create-portal`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${session.access_token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        customer_id: userProfile.stripe_customer_id
-                    })
-                })
-                
-                const { url } = await response.json()
-                
-                if (url) {
-                    window.location.href = url
-                }
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                const response = await fetch(`${SUPABASE_URL}/functions/v1/create-portal`, { method: 'POST', headers: { 'Authorization': `Bearer ${session.access_token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ customer_id: userProfile.stripe_customer_id }) });
+                const { url } = await response.json();
+                if (url) window.location.href = url;
             } catch (error) {
-                console.error('Billing portal error:', error)
-                alert('Error opening billing portal. Please try again.')
+                console.error('Billing portal error:', error);
+                alert('Error opening billing portal. Please try again.');
             }
         }
         
         async function logDecision() {
-            const textarea = document.getElementById('decision-textarea')
-            const decisionText = textarea.value.trim()
-            
-            if (!decisionText) {
-                alert('Please enter a decision first')
-                return
-            }
-            
-            if (!currentUser) {
-                alert('Please log in to log decisions')
-                return
-            }
-            
-            const { data: newDecision, error } = await supabase
-                .from('decisions')
-                .insert([{
-                    user_id: currentUser.id,
-                    decision_text: decisionText,
-                    ai_analysis: null
-                }])
-                .select()
-                .single()
-            
-            if (error) {
-                console.error('Error saving decision:', error)
-                alert('Error saving decision. Please try again.')
-                return
-            }
-            
-            textarea.value = ''
-            document.getElementById('success-msg').classList.add('show')
-            setTimeout(() => {
-                document.getElementById('success-msg').classList.remove('show')
-            }, 5000)
-            
-            userDecisions.unshift(newDecision)
-            renderDecisions()
-            
-            analyzeDecision(newDecision.id, decisionText)
+            const textarea = document.getElementById('decision-textarea');
+            const decisionText = textarea.value.trim();
+            if (!decisionText) { alert('Please enter a decision first'); return; }
+            if (!currentUser) { alert('Please log in to log decisions'); return; }
+            const { data: newDecision, error } = await supabaseClient.from('decisions').insert([{ user_id: currentUser.id, decision_text: decisionText, ai_analysis: null }]).select().single();
+            if (error) { console.error('Error saving decision:', error); alert('Error saving decision. Please try again.'); return; }
+            textarea.value = '';
+            document.getElementById('success-msg').classList.add('show');
+            setTimeout(() => { document.getElementById('success-msg').classList.remove('show'); }, 5000);
+            userDecisions.unshift(newDecision);
+            renderDecisions();
+            analyzeDecision(newDecision.id, decisionText);
         }
         
         async function analyzeDecision(decisionId, decisionText) {
             try {
-                const { data: { session } } = await supabase.auth.getSession()
-                
-                const response = await fetch(`${SUPABASE_URL}/functions/v1/analyze-decision`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${session.access_token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        decision_text: decisionText,
-                        user_id: currentUser.id
-                    })
-                })
-                
-                const result = await response.json()
-                
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                const response = await fetch(`${SUPABASE_URL}/functions/v1/analyze-decision`, { method: 'POST', headers: { 'Authorization': `Bearer ${session.access_token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ decision_text: decisionText, user_id: currentUser.id }) });
+                const result = await response.json();
                 if (result.analysis) {
-                    await supabase
-                        .from('decisions')
-                        .update({ ai_analysis: result.analysis })
-                        .eq('id', decisionId)
-                    
-                    const index = userDecisions.findIndex(d => d.id === decisionId)
-                    if (index !== -1) {
-                        userDecisions[index].ai_analysis = result.analysis
-                        renderDecisions()
-                    }
+                    await supabaseClient.from('decisions').update({ ai_analysis: result.analysis }).eq('id', decisionId);
+                    const index = userDecisions.findIndex(d => d.id === decisionId);
+                    if (index !== -1) { userDecisions[index].ai_analysis = result.analysis; renderDecisions(); }
                 }
             } catch (error) {
-                console.error('Error analyzing decision:', error)
+                console.error('Error analyzing decision:', error);
             }
         }
         
         function showLanding() {
-            document.getElementById('landing').classList.add('active')
-            document.getElementById('dashboard').classList.remove('active')
-            document.getElementById('nav-cta-btn').textContent = 'Start Free Trial'
+            document.getElementById('landing').classList.add('active');
+            document.getElementById('dashboard').classList.remove('active');
+            document.getElementById('nav-cta-btn').textContent = 'Start Free Trial';
         }
         
         function showDashboard() {
-            document.getElementById('landing').classList.remove('active')
-            document.getElementById('dashboard').classList.add('active')
-            document.getElementById('nav-cta-btn').textContent = 'Log Out'
+            document.getElementById('landing').classList.remove('active');
+            document.getElementById('dashboard').classList.add('active');
+            document.getElementById('nav-cta-btn').textContent = 'Log Out';
         }
         
         function handleNavCTA() {
-            if (currentUser) {
-                logout()
-            } else {
-                openSignup('Pro')
-            }
+            if (currentUser) { logout(); } else { openSignup('Pro'); }
         }
         
         function goHome() {
-            if (currentUser) {
-                showDashboard()
-            } else {
-                showLanding()
-            }
+            if (currentUser) { showDashboard(); } else { showLanding(); }
         }
         
         function openSignup(tier) {
-            currentTier = tier
-            document.getElementById('modal-tier-name').textContent = tier
-            document.getElementById('modal-price').textContent = tier === 'Founder' ? '49' : '99'
-            document.getElementById('signupModal').classList.add('active')
-            setTimeout(() => document.getElementById('signup-name').focus(), 100)
+            currentTier = tier;
+            document.getElementById('modal-tier-name').textContent = tier;
+            document.getElementById('modal-price').textContent = tier === 'Founder' ? '49' : '99';
+            document.getElementById('signupModal').classList.add('active');
+            setTimeout(() => document.getElementById('signup-name').focus(), 100);
         }
         
         function closeModal() {
-            document.getElementById('signupModal').classList.remove('active')
-            document.getElementById('signup-name').value = ''
-            document.getElementById('signup-email').value = ''
+            document.getElementById('signupModal').classList.remove('active');
+            document.getElementById('signup-name').value = '';
+            document.getElementById('signup-email').value = '';
         }
         
         function showLogin(e) {
-            e.preventDefault()
-            closeModal()
-            document.getElementById('loginModal').classList.add('active')
-            setTimeout(() => document.getElementById('login-email').focus(), 100)
+            e.preventDefault();
+            closeModal();
+            document.getElementById('loginModal').classList.add('active');
+            setTimeout(() => document.getElementById('login-email').focus(), 100);
         }
         
         function closeLoginModal() {
-            document.getElementById('loginModal').classList.remove('active')
-            document.getElementById('login-email').value = ''
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('login-email').value = '';
         }
         
         function showSignup(e) {
-            e.preventDefault()
-            closeLoginModal()
-            openSignup('Pro')
+            e.preventDefault();
+            closeLoginModal();
+            openSignup('Pro');
         }
         
         function validateEmail(email) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
         
         function escapeHtml(text) {
-            const div = document.createElement('div')
-            div.textContent = text
-            return div.innerHTML
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
         
-        window.addEventListener('load', init)
+        window.addEventListener('load', init);
     </script>
     
     <footer style="background:var(--black);border-top:1px solid rgba(212,175,55,.2);padding:4rem 2rem;margin-top:0">
@@ -635,17 +463,13 @@
                 <div>
                     <h4 style="color:var(--gold);font-size:0.9rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem;font-weight:700">Product</h4>
                     <div style="display:flex;flex-direction:column;gap:0.7rem">
-                        <a href="#" onclick="openSignup('Pro')" style="color:var(--gray-400);text-decoration:none;font-size:0.95rem;transition:color 0.3s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray-400)'">Start Free Trial</a>
-                        <a href="#" onclick="showLogin(event)" style="color:var(--gray-400);text-decoration:none;font-size:0.95rem;transition:color 0.3s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray-400)'">Log In</a>
+                        <a href="#" onclick="openSignup('Pro')" style="color:var(--gray-400);text-decoration:none;font-size:0.95rem">Start Free Trial</a>
+                        <a href="#" onclick="showLogin(event)" style="color:var(--gray-400);text-decoration:none;font-size:0.95rem">Log In</a>
                     </div>
                 </div>
             </div>
             <div style="border-top:1px solid rgba(212,175,55,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
                 <p style="color:var(--gray-500);font-size:0.9rem">© 2026 Parallax. All rights reserved.</p>
-                <div style="display:flex;gap:2rem">
-                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:0.9rem;transition:color 0.3s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray-500)'">Privacy Policy</a>
-                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:0.9rem;transition:color 0.3s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray-500)'">Terms of Service</a>
-                </div>
             </div>
         </div>
     </footer>
