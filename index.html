@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-    :root{--black:#000;--white:#FAFAFA;--gold:#D4AF37;--gold-dark:#B8941F;--gray-300:#D4D4D4;--gray-400:#A3A3A3;--gray-500:#737373;--gray-600:#525252;--gray-900:#171717;--success:#10b981;--error:#ef4444;--font-serif:'Cormorant Garamond',serif;--font-sans:'Inter',system-ui,sans-serif}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-sans);background:var(--black);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}.page-section{display:none}.page-section.active{display:block}nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,175,55,.2);padding:1.2rem 2rem}nav .container{max-width:1600px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}.logo{font-family:var(--font-serif);font-size:1.8rem;font-weight:500;background:linear-gradient(135deg,var(--gold) 0%,var(--white) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.02em;cursor:pointer}.nav-cta{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);color:var(--black);padding:.7rem 1.8rem;border-radius:50px;font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 15px rgba(212,175,55,.3)}.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,175,55,.5)}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:12rem 2rem 6rem;background:radial-gradient(ellipse at 50% 20%,rgba(212,175,55,.15) 0%,transparent 70%),var(--black);text-align:center;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,175,55,0.08)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');opacity:.4;animation:gridMove 30s linear infinite}@keyframes gridMove{from{transform:translateY(0)}to{transform:translateY(100px)}}.hero-content{max-width:950px;position:relative;z-index:1}.exclusive-badge{display:inline-flex;align-items:center;gap:.8rem;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);color:var(--black);padding:.8rem 2rem;border-radius:50px;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;margin-bottom:2.5rem;box-shadow:0 10px 40px rgba(212,175,55,.4)}.hero h1{font-family:var(--font-serif);font-size:5.5rem;font-weight:400;line-height:1.05;margin-bottom:2rem;letter-spacing:-.04em;background:linear-gradient(135deg,var(--white) 0%,var(--gray-400) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero .subtitle{font-size:1.6rem;color:var(--gray-300);max-width:800px;margin:0 auto 4rem;line-height:1.65;font-weight:400}.cta-primary{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);color:var(--black);padding:1.6rem 5rem;border-radius:50px;font-weight:900;font-size:1.15rem;cursor:pointer;border:none;text-transform:uppercase;letter-spacing:.08em;box-shadow:0 15px 50px rgba(212,175,55,.4);transition:all .3s ease}.cta-primary:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(212,175,55,.6)}.cta-primary:disabled{opacity:.5;cursor:not-allowed}.hero-note{font-size:.95rem;color:var(--gray-600)}.hero-note strong{color:var(--gold)}.dashboard{background:var(--black);min-height:100vh;padding-top:6rem}.dashboard-content{max-width:1200px;margin:0 auto;padding:2rem}.welcome-card{background:linear-gradient(135deg,rgba(212,175,55,.15) 0%,transparent 100%);border:3px solid rgba(212,175,55,.4);padding:4rem 3rem;border-radius:28px;margin-bottom:3rem}.welcome-card h1{font-family:var(--font-serif);font-size:4rem;margin-bottom:1.5rem}.subscription-badge{display:inline-block;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);color:var(--black);padding:.5rem 1.5rem;border-radius:50px;font-size:.85rem;font-weight:800;margin-top:1rem}.card{background:rgba(255,255,255,.03);border:2px solid rgba(212,175,55,.2);padding:3.5rem 3rem;border-radius:24px;margin-bottom:3rem}.card h2{font-family:var(--font-serif);font-size:2.8rem;margin-bottom:1.5rem}textarea{width:100%;min-height:180px;padding:1.6rem;border:2px solid rgba(212,175,55,.2);border-radius:16px;font-size:1.1rem;font-family:var(--font-sans);resize:vertical;margin-bottom:1.5rem;background:rgba(255,255,255,.06);color:var(--white)}textarea:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 4px rgba(212,175,55,.1)}.success-banner{background:linear-gradient(135deg,var(--success) 0%,#059669 100%);color:var(--white);padding:1.5rem 2.5rem;border-radius:16px;margin-bottom:3rem;display:none;align-items:center;gap:1.5rem;font-weight:700;font-size:1.1rem}.success-banner.show{display:flex}.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.97);z-index:2000;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(15px)}.modal.active{display:flex}.modal-content{background:var(--gray-900);border:3px solid rgba(212,175,55,.4);padding:4.5rem 3.5rem;border-radius:32px;max-width:600px;width:100%;box-shadow:0 40px 120px rgba(0,0,0,.9)}.modal-content h3{font-family:var(--font-serif);font-size:3.5rem;margin-bottom:1.5rem;background:linear-gradient(135deg,var(--gold) 0%,var(--white) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.modal-content input{width:100%;padding:1.6rem;border:2px solid rgba(212,175,55,.2);border-radius:16px;font-size:1.1rem;margin-bottom:1.5rem;font-family:var(--font-sans);background:rgba(255,255,255,.06);color:var(--white)}.modal-content input:focus{outline:0;border-color:var(--gold)}.error-message{color:var(--error);font-size:.95rem;margin-top:-1rem;margin-bottom:1.5rem;display:none;font-weight:600}.error-message.show{display:block}.google-signin-btn{width:100%;padding:1.4rem;background:white;color:#000;border:2px solid rgba(255,255,255,.2);border-radius:16px;font-size:1.05rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;margin-bottom:0}.google-signin-btn:hover{background:#f8f8f8;border-color:rgba(255,255,255,.4);transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,255,255,.1)}.modal-buttons{display:flex;gap:1.5rem;margin-top:3rem}.modal-buttons button{flex:1;padding:1.7rem;border:none;border-radius:50px;font-weight:900;cursor:pointer;font-size:1.1rem;text-transform:uppercase;letter-spacing:.08em}.modal-buttons .primary{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);color:var(--black)}.modal-buttons .secondary{background:rgba(255,255,255,.08);color:var(--white)}.loading-spinner{display:inline-block;width:18px;height:18px;border:3px solid rgba(0,0,0,.3);border-top-color:#000;border-radius:50%;animation:spin .6s linear infinite;margin-right:10px}@keyframes spin{to{transform:rotate(360deg)}}.decisions-list{list-style:none}.decision-item{background:rgba(255,255,255,.03);border:2px solid rgba(212,175,55,.15);padding:2rem;border-radius:16px;margin-bottom:1.5rem}.decision-date{font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem}.decision-text{color:var(--white);margin-bottom:1rem;line-height:1.7}.decision-analysis{background:rgba(212,175,55,.1);border-left:4px solid var(--gold);padding:1.5rem;border-radius:8px;color:var(--gray-300);line-height:1.7;white-space:pre-wrap}.billing-info{background:rgba(212,175,55,.08);border:2px solid rgba(212,175,55,.3);padding:2rem;border-radius:16px;margin-top:2rem}.billing-info p{margin-bottom:1rem;color:var(--gray-300)}.manage-billing-btn{background:rgba(255,255,255,.08);color:var(--white);border:2px solid rgba(212,175,55,.3);padding:1rem 2rem;border-radius:50px;font-weight:700;cursor:pointer;margin-top:1rem;transition:all .3s}.manage-billing-btn:hover{background:rgba(212,175,55,.15);border-color:var(--gold)}@media (max-width:768px){.hero h1{font-size:3.2rem}.welcome-card h1{font-size:2.5rem}}
+    :root{--black:#000;--white:#FAFAFA;--gold:#D4AF37;--gold-dark:#B8941F;--gray-300:#D4D4D4;--gray-400:#A3A3A3;--gray-500:#737373;--gray-600:#525252;--gray-900:#171717;--success:#10b981;--error:#ef4444;--font-serif:'Cormorant Garamond',serif;--font-sans:'Inter',system-ui,sans-serif}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-sans);background:var(--black);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}.page-section{display:none}.page-section.active{display:block}nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,175,55,.2);padding:1.2rem 2rem}nav .container{max-width:1600px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}.logo{font-family:var(--font-serif);font-size:1.8rem;font-weight:500;background:linear-gradient(135deg,var(--gold) 0%,var(--white) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.02em;cursor:pointer}.nav-cta{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);color:var(--black);padding:.7rem 1.8rem;border-radius:50px;font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 15px rgba(212,175,55,.3)}.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,175,55,.5)}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:12rem 2rem 6rem;background:radial-gradient(ellipse at 50% 20%,rgba(212,175,55,.15) 0%,transparent 70%),var(--black);text-align:center;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,175,55,0.08)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');opacity:.4;animation:gridMove 30s linear infinite}@keyframes gridMove{from{transform:translateY(0)}to{transform:translateY(100px)}}.hero-content{max-width:950px;position:relative;z-index:1}.exclusive-badge{display:inline-flex;align-items:center;gap:.8rem;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);color:var(--black);padding:.8rem 2rem;border-radius:50px;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;margin-bottom:2.5rem;box-shadow:0 10px 40px rgba(212,175,55,.4)}.hero h1{font-family:var(--font-serif);font-size:5.5rem;font-weight:400;line-height:1.05;margin-bottom:2rem;letter-spacing:-.04em;background:linear-gradient(135deg,var(--white) 0%,var(--gray-400) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero .subtitle{font-size:1.6rem;color:var(--gray-300);max-width:800px;margin:0 auto 4rem;line-height:1.65;font-weight:400}.cta-primary{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);color:var(--black);padding:1.6rem 5rem;border-radius:50px;font-weight:900;font-size:1.15rem;cursor:pointer;border:none;text-transform:uppercase;letter-spacing:.08em;box-shadow:0 15px 50px rgba(212,175,55,.4);transition:all .3s ease}.cta-primary:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(212,175,55,.6)}.cta-primary:disabled{opacity:.5;cursor:not-allowed}.hero-note{font-size:.95rem;color:var(--gray-600)}.hero-note strong{color:var(--gold)}.dashboard{background:var(--black);min-height:100vh;padding-top:6rem}.dashboard-content{max-width:1200px;margin:0 auto;padding:2rem}.welcome-card{background:linear-gradient(135deg,rgba(212,175,55,.15) 0%,transparent 100%);border:3px solid rgba(212,175,55,.4);padding:4rem 3rem;border-radius:28px;margin-bottom:3rem}.welcome-card h1{font-family:var(--font-serif);font-size:4rem;margin-bottom:1.5rem}.subscription-badge{display:inline-block;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);color:var(--black);padding:.5rem 1.5rem;border-radius:50px;font-size:.85rem;font-weight:800;margin-top:1rem}.card{background:rgba(255,255,255,.03);border:2px solid rgba(212,175,55,.2);padding:3.5rem 3rem;border-radius:24px;margin-bottom:3rem}.card h2{font-family:var(--font-serif);font-size:2.8rem;margin-bottom:1.5rem}textarea{width:100%;min-height:180px;padding:1.6rem;border:2px solid rgba(212,175,55,.2);border-radius:16px;font-size:1.1rem;font-family:var(--font-sans);resize:vertical;margin-bottom:1.5rem;background:rgba(255,255,255,.06);color:var(--white)}textarea:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 4px rgba(212,175,55,.1)}.success-banner{background:linear-gradient(135deg,var(--success) 0%,#059669 100%);color:var(--white);padding:1.5rem 2.5rem;border-radius:16px;margin-bottom:3rem;display:none;align-items:center;gap:1.5rem;font-weight:700;font-size:1.1rem}.success-banner.show{display:flex}.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.97);z-index:2000;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(15px)}.modal.active{display:flex}.modal-content{background:var(--gray-900);border:3px solid rgba(212,175,55,.4);padding:4.5rem 3.5rem;border-radius:32px;max-width:600px;width:100%;box-shadow:0 40px 120px rgba(0,0,0,.9)}.modal-content h3{font-family:var(--font-serif);font-size:3.5rem;margin-bottom:2.5rem;background:linear-gradient(135deg,var(--gold) 0%,var(--white) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.modal-content input{width:100%;padding:1.6rem;border:2px solid rgba(212,175,55,.2);border-radius:16px;font-size:1.1rem;margin-bottom:1.5rem;font-family:var(--font-sans);background:rgba(255,255,255,.06);color:var(--white)}textarea::-webkit-input-placeholder{color:var(--gray-500)}textarea:-moz-placeholder{color:var(--gray-500)}input::-webkit-input-placeholder{color:var(--gray-500)}input:-moz-placeholder{color:var(--gray-500)}.modal-content input:focus{outline:0;border-color:var(--gold)}.error-message{color:var(--error);font-size:.95rem;margin-top:-1rem;margin-bottom:1.5rem;display:none;font-weight:600}.error-message.show{display:block}.google-signin-btn{width:100%;padding:1.4rem;background:white;color:#000;border:2px solid rgba(255,255,255,.2);border-radius:16px;font-size:1.05rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;margin-bottom:0}.google-signin-btn:hover{background:#f8f8f8;border-color:rgba(255,255,255,.4);transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,255,255,.1)}.modal-buttons{display:flex;gap:1.5rem;margin-top:3rem}.modal-buttons button{flex:1;padding:1.7rem;border:none;border-radius:50px;font-weight:900;cursor:pointer;font-size:1.1rem;text-transform:uppercase;letter-spacing:.08em}.modal-buttons .primary{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);color:var(--black)}.modal-buttons .secondary{background:rgba(255,255,255,.08);color:var(--white)}.loading-spinner{display:inline-block;width:18px;height:18px;border:3px solid rgba(0,0,0,.3);border-top-color:#000;border-radius:50%;animation:spin .6s linear infinite;margin-right:10px}@keyframes spin{to{transform:rotate(360deg)}}.decisions-list{list-style:none}.decision-item{background:rgba(255,255,255,.03);border:2px solid rgba(212,175,55,.15);padding:2rem;border-radius:16px;margin-bottom:1.5rem}.decision-date{font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem}.decision-text{color:var(--white);margin-bottom:1rem;line-height:1.7}.decision-analysis{background:rgba(212,175,55,.1);border-left:4px solid var(--gold);padding:1.5rem;border-radius:8px;color:var(--gray-300);line-height:1.7;white-space:pre-wrap}.billing-info{background:rgba(212,175,55,.08);border:2px solid rgba(212,175,55,.3);padding:2rem;border-radius:16px;margin-top:2rem}.billing-info p{margin-bottom:1rem;color:var(--gray-300)}.manage-billing-btn{background:rgba(255,255,255,.08);color:var(--white);border:2px solid rgba(212,175,55,.3);padding:1rem 2rem;border-radius:50px;font-weight:700;cursor:pointer;margin-top:1rem;transition:all .3s}.manage-billing-btn:hover{background:rgba(212,175,55,.15);border-color:var(--gold)}@media (max-width:768px){.hero h1{font-size:3.2rem}.welcome-card h1{font-size:2.5rem}}
     </style>
 </head>
 <body>
@@ -125,10 +125,10 @@
         </div>
     </div>
 
+    <!-- Sign Up Modal -->
     <div class="modal" id="signupModal">
         <div class="modal-content">
             <h3>Start Your Free Trial</h3>
-            <p style="color:var(--gray-400);margin-bottom:2.5rem;font-size:1.1rem"><span id="modal-tier-name">Pro</span> plan • $<span id="modal-price">99</span>/month • 14-day free trial</p>
             
             <button class="google-signin-btn" onclick="signInWithGoogle()">
                 <svg style="width:20px;height:20px;margin-right:10px" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
@@ -142,10 +142,13 @@
             
             <input type="email" id="signup-email" placeholder="Email address">
             <div class="error-message" id="email-error">Please enter a valid email</div>
+
+            <input type="password" id="signup-password" placeholder="Create password (min 6 characters)">
+            <div class="error-message" id="password-error">Password must be at least 6 characters</div>
             
             <div class="modal-buttons">
                 <button class="secondary" onclick="closeModal()">Cancel</button>
-                <button class="primary" id="modal-submit-btn" onclick="submitSignup()"><span id="modal-submit-text">Send Magic Link</span></button>
+                <button class="primary" id="modal-submit-btn" onclick="submitSignup()"><span id="modal-submit-text">Create Account</span></button>
             </div>
             
             <p style="text-align:center;margin-top:2rem;color:var(--gray-500);font-size:.9rem">
@@ -154,10 +157,10 @@
         </div>
     </div>
 
+    <!-- Login Modal -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <h3>Welcome Back</h3>
-            <p style="color:var(--gray-400);margin-bottom:2.5rem">Log in to continue seeing your blind spots</p>
             
             <button class="google-signin-btn" onclick="signInWithGoogle()">
                 <svg style="width:20px;height:20px;margin-right:10px" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
@@ -167,11 +170,14 @@
             <div style="text-align:center;margin:2rem 0;color:var(--gray-500);font-size:.95rem">OR</div>
             
             <input type="email" id="login-email" placeholder="Email address">
-            <div class="error-message" id="login-error">Please enter a valid email</div>
+            <div class="error-message" id="login-email-error">Please enter a valid email</div>
+
+            <input type="password" id="login-password" placeholder="Password">
+            <div class="error-message" id="login-password-error">Please enter your password</div>
             
             <div class="modal-buttons">
                 <button class="secondary" onclick="closeLoginModal()">Cancel</button>
-                <button class="primary" id="login-submit-btn" onclick="submitLogin()"><span id="login-submit-text">Send Magic Link</span></button>
+                <button class="primary" id="login-submit-btn" onclick="submitLogin()"><span id="login-submit-text">Log In</span></button>
             </div>
             
             <p style="text-align:center;margin-top:2rem;color:var(--gray-500);font-size:.9rem">
@@ -293,48 +299,83 @@
         async function submitSignup() {
             const name = document.getElementById('signup-name').value.trim();
             const email = document.getElementById('signup-email').value.trim();
+            const password = document.getElementById('signup-password').value;
             const button = document.getElementById('modal-submit-btn');
             const buttonText = document.getElementById('modal-submit-text');
+            
             document.getElementById('name-error').classList.remove('show');
             document.getElementById('email-error').classList.remove('show');
+            document.getElementById('password-error').classList.remove('show');
+            
             let hasError = false;
             if (!name || name.length < 2) { document.getElementById('name-error').classList.add('show'); hasError = true; }
             if (!email || !validateEmail(email)) { document.getElementById('email-error').classList.add('show'); hasError = true; }
+            if (!password || password.length < 6) { document.getElementById('password-error').classList.add('show'); hasError = true; }
             if (hasError) return;
+            
             button.disabled = true;
-            buttonText.innerHTML = '<span class="loading-spinner"></span>Sending magic link...';
+            buttonText.innerHTML = '<span class="loading-spinner"></span>Creating account...';
+            
             try {
-                const { error } = await supabaseClient.auth.signInWithOtp({ email: email, options: { data: { name: name, tier: currentTier }, emailRedirectTo: window.location.origin } });
+                const { data, error } = await supabaseClient.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            name: name,
+                            tier: currentTier
+                        }
+                    }
+                });
+                
                 if (error) throw error;
+                
                 closeModal();
-                alert('✅ Check your email! We sent you a magic link to sign in. (Check spam folder if you don\'t see it)');
+                alert('✅ Account created! You are now logged in.');
+                
             } catch (error) {
                 console.error('Signup error:', error);
                 alert(error.message || 'Error creating account. Please try again.');
             }
+            
             button.disabled = false;
-            buttonText.textContent = 'Send Magic Link';
+            buttonText.textContent = 'Create Account';
         }
         
         async function submitLogin() {
             const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
             const button = document.getElementById('login-submit-btn');
             const buttonText = document.getElementById('login-submit-text');
-            document.getElementById('login-error').classList.remove('show');
-            if (!email || !validateEmail(email)) { document.getElementById('login-error').classList.add('show'); return; }
+            
+            document.getElementById('login-email-error').classList.remove('show');
+            document.getElementById('login-password-error').classList.remove('show');
+            
+            let hasError = false;
+            if (!email || !validateEmail(email)) { document.getElementById('login-email-error').classList.add('show'); hasError = true; }
+            if (!password) { document.getElementById('login-password-error').classList.add('show'); hasError = true; }
+            if (hasError) return;
+            
             button.disabled = true;
-            buttonText.innerHTML = '<span class="loading-spinner"></span>Sending magic link...';
+            buttonText.innerHTML = '<span class="loading-spinner"></span>Logging in...';
+            
             try {
-                const { error } = await supabaseClient.auth.signInWithOtp({ email: email, options: { emailRedirectTo: window.location.origin } });
+                const { error } = await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+                
                 if (error) throw error;
+                
                 closeLoginModal();
-                alert('✅ Check your email! We sent you a magic link to sign in.');
+                
             } catch (error) {
                 console.error('Login error:', error);
-                alert(error.message || 'Error logging in. Please try again.');
+                alert(error.message || 'Error logging in. Please check your email and password.');
             }
+            
             button.disabled = false;
-            buttonText.textContent = 'Send Magic Link';
+            buttonText.textContent = 'Log In';
         }
         
         async function logout() {
@@ -410,8 +451,6 @@
         
         function openSignup(tier) {
             currentTier = tier;
-            document.getElementById('modal-tier-name').textContent = tier;
-            document.getElementById('modal-price').textContent = tier === 'Founder' ? '49' : '99';
             document.getElementById('signupModal').classList.add('active');
             setTimeout(() => document.getElementById('signup-name').focus(), 100);
         }
@@ -420,6 +459,7 @@
             document.getElementById('signupModal').classList.remove('active');
             document.getElementById('signup-name').value = '';
             document.getElementById('signup-email').value = '';
+            document.getElementById('signup-password').value = '';
         }
         
         function showLogin(e) {
@@ -432,6 +472,7 @@
         function closeLoginModal() {
             document.getElementById('loginModal').classList.remove('active');
             document.getElementById('login-email').value = '';
+            document.getElementById('login-password').value = '';
         }
         
         function showSignup(e) {
