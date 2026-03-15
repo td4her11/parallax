@@ -31,7 +31,7 @@
                 <h1>See Your Blind Spots<br>Before They Cost You Millions</h1>
                 <p class="subtitle">AI that shifts your perspective. Log decisions, discover hidden patterns, stop repeating expensive mistakes you can't even see.</p>
                 <div style="display:flex;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;flex-wrap:wrap">
-                    <button class="cta-primary" onclick="openSignup('Pro')">Start Free Trial</button>
+                    <button class="cta-primary" onclick="openSignup()">Start Free Trial</button>
                 </div>
                 <p class="hero-note"><strong>14-day free trial</strong> • Card required, but cancel before day 14 = <strong>$0 charged</strong> • <strong>Cancel anytime, no questions</strong></p>
             </div>
@@ -67,7 +67,7 @@
 
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">What happens after my 14-day free trial?</h3>
-                    <p style="color:var(--gray-300);line-height:1.8">Your card is saved at signup but NOT charged during the trial. You have full access for 14 days. Cancel anytime with one click from your dashboard - if you cancel before day 14, you're never charged a cent. If you love it and don't cancel, you'll be charged $49/month (Founder) or $99/month (Pro) on day 15. We'll email you 3 days before to remind you.</p>
+                    <p style="color:var(--gray-300);line-height:1.8">Your card is saved at signup but NOT charged during the trial. You have full access for 14 days. Cancel anytime with one click from your dashboard - if you cancel before day 14, you're never charged a cent. If you love it and don't cancel, you'll be charged $49/month on day 15. We'll email you 3 days before to remind you.</p>
                 </div>
 
                 <div class="card">
@@ -77,7 +77,7 @@
 
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">Can I use this for my team?</h3>
-                    <p style="color:var(--gray-300);line-height:1.8">Yes! Pro tier includes team features. Share decisions with co-founders, get collective pattern insights, see team blind spots. Perfect for leadership teams making high-stakes decisions together.</p>
+                    <p style="color:var(--gray-300);line-height:1.8">Team collaboration features are coming in Q2 2026! You'll be able to share decisions with co-founders, get collective pattern insights, and see team blind spots. For now, Parallax is optimized for individual decision-makers and solo founders.</p>
                 </div>
 
                 <div class="card">
@@ -95,7 +95,7 @@
                 <h1>Welcome back, <span id="user-name-display">Friend</span></h1>
                 <p style="font-size:1.3rem;color:var(--gray-300);margin-bottom:1rem">Ready to see what you can't see?</p>
                 <div class="subscription-badge" id="subscription-badge">Pro Plan - Active</div>
-                <button class="cta-primary" id="start-trial-btn" style="display:none;margin-top:2rem" onclick="openPlanModal()">
+                <button class="cta-primary" id="start-trial-btn" style="display:none;margin-top:2rem" onclick="openSignup()">
                     Start Your 14-Day Free Trial
                 </button>
                 <p id="trial-btn-note" style="display:none;margin-top:1rem;color:var(--gray-500);font-size:0.95rem;text-align:center">Card required • Cancel anytime before day 14 = $0 charged</p>
@@ -133,14 +133,13 @@
                 </div>
             </div>
 
-            <button class="manage-billing-btn" id="upgrade-btn" style="display:none" onclick="openSignup('Pro')">Upgrade to Pro</button>
         </div>
     </div>
 
     <div class="modal" id="signupModal">
         <div class="modal-content">
             <h3>Start Your Free Trial</h3>
-            <p style="text-align:center;margin-bottom:2rem;color:var(--gray-400);font-size:1rem">Plan: <strong id="selected-plan-display" style="color:var(--gold)">Pro</strong> • $<span id="selected-price-display">99</span>/month after trial</p>
+            <p style="text-align:center;margin-bottom:2rem;color:var(--gray-400);font-size:1rem">$49/month after 14-day trial • Cancel anytime</p>
             
             <button class="google-signin-btn" onclick="signInWithGoogle()">
                 <svg style="width:20px;height:20px;margin-right:10px" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
@@ -197,55 +196,20 @@
         </div>
     </div>
 
-    <div class="modal" id="planModal">
-        <div class="modal-content" style="max-width:750px;padding:2.5rem 2rem">
-            <h3 style="font-size:2.5rem;margin-bottom:0.8rem">Choose Your Plan</h3>
-            <p style="color:var(--gray-400);margin-bottom:2rem;font-size:.95rem;text-align:center">Start your 14-day free trial • Cancel anytime</p>
-            
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.8rem">
-                <div style="background:rgba(255,255,255,.03);border:2px solid rgba(212,175,55,.2);padding:1.8rem 1.5rem;border-radius:16px;cursor:pointer;transition:all .3s" onclick="selectPlan('Founder')" id="founder-plan-card">
-                    <h4 style="font-size:1.4rem;color:var(--gold);margin-bottom:.4rem">Founder</h4>
-                    <div style="font-size:2.3rem;font-weight:800;margin-bottom:.6rem">$49<span style="font-size:.95rem;color:var(--gray-500)">/mo</span></div>
-                    <p style="color:var(--gray-400);font-size:.85rem;margin-bottom:1rem">Perfect for solo founders</p>
-                    <ul style="list-style:none;padding:0;color:var(--gray-300);font-size:.85rem;line-height:1.7">
-                        <li>✓ Unlimited decisions</li>
-                        <li>✓ AI pattern analysis</li>
-                        <li>✓ Decision history</li>
-                    </ul>
-                </div>
-                
-                <div style="background:linear-gradient(135deg,rgba(212,175,55,.15) 0%,transparent 100%);border:3px solid var(--gold);padding:1.8rem 1.5rem;border-radius:16px;cursor:pointer;transition:all .3s;position:relative" onclick="selectPlan('Pro')" id="pro-plan-card">
-                    <div style="position:absolute;top:-8px;right:12px;background:var(--gold);color:var(--black);padding:.25rem .7rem;border-radius:20px;font-size:.65rem;font-weight:900;text-transform:uppercase">Popular</div>
-                    <h4 style="font-size:1.4rem;color:var(--gold);margin-bottom:.4rem">Pro</h4>
-                    <div style="font-size:2.3rem;font-weight:800;margin-bottom:.6rem">$99<span style="font-size:.95rem;color:var(--gray-500)">/mo</span></div>
-                    <p style="color:var(--gray-400);font-size:.85rem;margin-bottom:1rem">For serious decision makers</p>
-                    <ul style="list-style:none;padding:0;color:var(--gray-300);font-size:.85rem;line-height:1.7">
-                        <li>✓ Everything in Founder</li>
-                        <li>✓ Team sharing</li>
-                        <li>✓ Advanced insights</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <button class="secondary" onclick="closePlanModal()" style="width:100%;padding:.9rem;font-size:.9rem">Cancel</button>
-        </div>
-    </div>
-
     <script>
         const SUPABASE_URL = 'https://qzdgpxdeswituuzrbxor.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6ZGdweGRlc3dpdHV1enJieG9yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MTc4OTIsImV4cCI6MjA4OTA5Mzg5Mn0.Y440r4lwGf0PB7qw_fMTsPIQVFX7VkIcAym8gnBukxI';
         const STRIPE_PUBLISHABLE_KEY = 'pk_test_51SxEqzF06z0bgUa4DucfEgGvCERalW48cj2p1tcRoKtcNJxBXlQM2JgPRUKCM';
         
         const STRIPE_PRICES = {
-            'Founder': { monthly: 'price_1T6CXLFf06z0bgUayBrfGAga' },
-            'Pro': { monthly: 'price_1T6CaBFf06z0bgUa0ylBqX8k' }
+            'Founder': { monthly: 'price_1T6CXLFf06z0bgUayBrfGAga' }
         };
         
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         const stripeClient = Stripe(STRIPE_PUBLISHABLE_KEY);
         
         let currentUser = null;
-        let currentTier = 'Pro';
+        let currentTier = 'Founder';
         let userProfile = null;
         let userDecisions = [];
         
@@ -463,27 +427,15 @@
         }
         
         async function selectPlan(tier) {
-            currentTier = tier;
-            closePlanModal();
-            
-            // If user not logged in, open signup modal
-            if (!currentUser) {
-                document.getElementById('selected-plan-display').textContent = tier;
-                document.getElementById('selected-price-display').textContent = tier === 'Founder' ? '49' : '99';
-                document.getElementById('signupModal').classList.add('active');
-                setTimeout(() => document.getElementById('signup-name').focus(), 100);
-                return;
-            }
-            
-            // User is logged in, go to Stripe
-            await startTrial();
+            // Only one tier now - just open signup
+            openSignup();
         }
         
         async function startTrial() {
             if (!currentUser) { alert('Please log in first'); return; }
             try {
                 const { data: { session } } = await supabaseClient.auth.getSession();
-                const priceId = STRIPE_PRICES[currentTier || 'Pro'].monthly;
+                const priceId = STRIPE_PRICES['Founder'].monthly;
                 const response = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
                     method: 'POST',
                     headers: {
@@ -513,11 +465,12 @@
         }
         
         function openPlanModal() {
-            document.getElementById('planModal').classList.add('active');
+            // No plan modal anymore - just open signup
+            openSignup();
         }
         
         function closePlanModal() {
-            document.getElementById('planModal').classList.remove('active');
+            // Not used anymore but keeping for compatibility
         }
         
         async function logDecision() {
@@ -563,20 +516,22 @@
         }
         
         function handleNavCTA() {
-            if (currentUser) { logout(); } else { openSignup('Pro'); }
+            if (currentUser) { logout(); } else { openSignup(); }
         }
         
         function goHome() {
             if (currentUser) { showDashboard(); } else { showLanding(); }
         }
         
-        function openSignup(tier) {
-            currentTier = tier;
-            document.getElementById('planModal').classList.add('active');
+        function openSignup() {
+            currentTier = 'Founder';
+            document.getElementById('signupModal').classList.add('active');
+            setTimeout(() => document.getElementById('signup-name').focus(), 100);
         }
         
         function closePlanModal() {
-            document.getElementById('planModal').classList.remove('active');
+            // Not used anymore but keeping for compatibility
+            return;
         }
         
         function closeModal() {
@@ -602,7 +557,7 @@
         function showSignup(e) {
             e.preventDefault();
             closeLoginModal();
-            openSignup('Pro');
+            openSignup();
         }
         
         function validateEmail(email) {
@@ -628,7 +583,7 @@
                 <div>
                     <h4 style="color:var(--gold);font-size:0.9rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem;font-weight:700">Product</h4>
                     <div style="display:flex;flex-direction:column;gap:0.7rem">
-                        <a href="#" onclick="openSignup('Pro')" style="color:var(--gray-400);text-decoration:none;font-size:0.95rem">Start Free Trial</a>
+                        <a href="#" onclick="openSignup()" style="color:var(--gray-400);text-decoration:none;font-size:0.95rem">Start Free Trial</a>
                         <a href="#" onclick="showLogin(event)" style="color:var(--gray-400);text-decoration:none;font-size:0.95rem">Log In</a>
                     </div>
                 </div>
