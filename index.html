@@ -33,7 +33,7 @@
                 <div style="display:flex;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;flex-wrap:wrap">
                     <button class="cta-primary" onclick="openSignup()">Start Free Trial</button>
                 </div>
-                <p class="hero-note"><strong>14-day free trial</strong> • Card required, but cancel before day 14 = <strong>$0 charged</strong> • <strong>Cancel anytime, no questions</strong></p>
+                <p class="hero-note"><strong>7-day free trial</strong> • Card required, but cancel before day 7 = <strong>$0 charged</strong> • <strong>Cancel anytime, no questions</strong></p>
             </div>
         </section>
 
@@ -66,13 +66,13 @@
                 </div>
 
                 <div class="card">
-                    <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">What happens after my 14-day free trial?</h3>
-                    <p style="color:var(--gray-300);line-height:1.8">Your card is saved at signup but NOT charged during the trial. You have full access for 14 days. Cancel anytime with one click from your dashboard - if you cancel before day 14, you're never charged a cent. If you love it and don't cancel, you'll be charged $49/month on day 15. We'll email you 3 days before to remind you.</p>
+                    <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">What happens after my 7-day free trial?</h3>
+                    <p style="color:var(--gray-300);line-height:1.8">Your card is saved at signup but NOT charged during the trial. You have full access for 7 days. Cancel anytime with one click from your dashboard - if you cancel before day 7, you're never charged a cent. If you love it and don't cancel, you'll be charged $49/month on day 8. We'll email you 2 days before to remind you.</p>
                 </div>
 
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">How do I cancel my trial or subscription?</h3>
-                    <p style="color:var(--gray-300);line-height:1.8">Click "Manage Billing" or "Cancel Trial" on your dashboard. One click, no questions asked, instant cancellation. If you cancel during the trial (days 1-14), your card is never charged. If you cancel after becoming a paying customer, you keep access until the end of your billing period.</p>
+                    <p style="color:var(--gray-300);line-height:1.8">Click "Manage Billing" or "Cancel Trial" on your dashboard. One click, no questions asked, instant cancellation. If you cancel during the trial (days 1-7), your card is never charged. If you cancel after becoming a paying customer, you keep access until the end of your billing period.</p>
                 </div>
 
                 <div class="card">
@@ -82,7 +82,7 @@
 
                 <div class="card">
                     <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--gold)">What if I don't like it?</h3>
-                    <p style="color:var(--gray-300);line-height:1.8">Click "Cancel Trial" on your dashboard during days 1-14 and you'll never be charged. Zero risk. After trial, cancel anytime from your billing portal - you keep access until the end of your paid period. We don't do dark patterns or make cancellation hard. One click, done.</p>
+                    <p style="color:var(--gray-300);line-height:1.8">Click "Cancel Trial" on your dashboard during days 1-7 and you'll never be charged. Zero risk. After trial, cancel anytime from your billing portal - you keep access until the end of your paid period. We don't do dark patterns or make cancellation hard. One click, done.</p>
                 </div>
             </div>
         </div>
@@ -96,9 +96,9 @@
                 <p style="font-size:1.3rem;color:var(--gray-300);margin-bottom:1rem">Ready to see what you can't see?</p>
                 <div class="subscription-badge" id="subscription-badge">Pro Plan - Active</div>
                 <button class="cta-primary" id="start-trial-btn" style="display:none;margin-top:2rem" onclick="openSignup()">
-                    Start Your 14-Day Free Trial
+                    Start Your 7-Day Free Trial
                 </button>
-                <p id="trial-btn-note" style="display:none;margin-top:1rem;color:var(--gray-500);font-size:0.95rem;text-align:center">Card required • Cancel anytime before day 14 = $0 charged</p>
+                <p id="trial-btn-note" style="display:none;margin-top:1rem;color:var(--gray-500);font-size:0.95rem;text-align:center">Card required • Cancel anytime before day 7 = $0 charged</p>
             </div>
 
             <div class="success-banner" id="success-msg">
@@ -125,7 +125,7 @@
                 <div class="billing-info">
                     <p><strong>Current Plan:</strong> <span id="current-plan">Pro</span></p>
                     <p><strong>Status:</strong> <span id="subscription-status">Active</span></p>
-                    <p id="trial-info" style="color:var(--gold);font-size:1.05rem"><strong>Trial Active:</strong> 14 days remaining • You won't be charged until day 15 unless you cancel</p>
+                    <p id="trial-info" style="color:var(--gold);font-size:1.05rem"><strong>Trial Active:</strong> 7 days remaining • You won't be charged until day 8 unless you cancel</p>
                     <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap">
                         <button class="manage-billing-btn" onclick="manageBilling()">Manage Billing</button>
                         <button class="manage-billing-btn" id="cancel-trial-btn" style="display:none;background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);color:#ef4444" onclick="cancelTrial()">Cancel Trial</button>
@@ -139,7 +139,7 @@
     <div class="modal" id="signupModal">
         <div class="modal-content">
             <h3>Start Your Free Trial</h3>
-            <p style="text-align:center;margin-bottom:2rem;color:var(--gray-400);font-size:1rem">$49/month after 14-day trial • Cancel anytime</p>
+            <p style="text-align:center;margin-bottom:2rem;color:var(--gray-400);font-size:1rem">$49/month after 7-day trial • Cancel anytime</p>
             
             <button class="google-signin-btn" onclick="signInWithGoogle()">
                 <svg style="width:20px;height:20px;margin-right:10px" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
@@ -276,7 +276,7 @@
                 trialBtnNote.style.display = 'none';
                 cancelTrialBtn.style.display = 'none';
             } else if (profile.subscription_status === 'trialing' && profile.stripe_customer_id) {
-                badge.textContent = 'Free Trial - 14 Days Remaining';
+                badge.textContent = 'Free Trial - 7 Days Remaining';
                 billingCard.style.display = 'block';
                 currentPlanEl.textContent = `${profile.tier} (Trial)`;
                 statusEl.textContent = 'Trial Active';
@@ -448,9 +448,17 @@
                         customer_email: currentUser.email
                     })
                 });
-                const { url, error } = await response.json();
-                if (error) throw new Error(error);
-                if (url) window.location.href = url;
+                const data = await response.json();
+                
+                if (response.status === 403 || data.error) {
+                    // Show the specific error message (trial abuse, etc)
+                    alert(data.error || 'Unable to start trial. Please contact support.');
+                    return;
+                }
+                
+                if (data.url) {
+                    window.location.href = data.url;
+                }
             } catch (error) {
                 console.error('Checkout error:', error);
                 alert('Error starting trial. Please try again.');
