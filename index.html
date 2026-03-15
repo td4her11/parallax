@@ -137,65 +137,6 @@
         </div>
     </div>
 
-    <div class="modal" id="planModal">
-        <div class="modal-content" style="max-width:800px">
-            <h3>Choose Your Plan</h3>
-            <p style="text-align:center;margin-bottom:3rem;color:var(--gray-400);font-size:1.1rem">Start your 14-day free trial • Cancel anytime</p>
-            
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem">
-                <div class="card" style="padding:2.5rem;cursor:pointer;transition:all .3s;border:3px solid rgba(212,175,55,.2)" onclick="selectPlan('Founder')" id="founder-card">
-                    <h4 style="font-size:1.8rem;margin-bottom:.5rem;color:var(--gold)">Founder</h4>
-                    <p style="font-size:3rem;font-weight:900;margin-bottom:1rem">$49<span style="font-size:1.2rem;color:var(--gray-500)">/mo</span></p>
-                    <p style="color:var(--gray-400);margin-bottom:2rem">Perfect for solo founders and small teams</p>
-                    <ul style="list-style:none;padding:0">
-                        <li style="padding:.5rem 0;color:var(--gray-300)">✓ Unlimited decisions</li>
-                        <li style="padding:.5rem 0;color:var(--gray-300)">✓ AI pattern recognition</li>
-                        <li style="padding:.5rem 0;color:var(--gray-300)">✓ Decision history</li>
-                    </ul>
-                </div>
-                
-                <div class="card" style="padding:2.5rem;cursor:pointer;transition:all .3s;border:3px solid var(--gold);background:rgba(212,175,55,.05)" onclick="selectPlan('Pro')" id="pro-card">
-                    <div style="background:var(--gold);color:var(--black);padding:.3rem .8rem;border-radius:20px;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;display:inline-block;margin-bottom:1rem">RECOMMENDED</div>
-                    <h4 style="font-size:1.8rem;margin-bottom:.5rem;color:var(--gold)">Pro</h4>
-                    <p style="font-size:3rem;font-weight:900;margin-bottom:1rem">$99<span style="font-size:1.2rem;color:var(--gray-500)">/mo</span></p>
-                    <p style="color:var(--gray-400);margin-bottom:2rem">For growing teams and serious decision-makers</p>
-                    <ul style="list-style:none;padding:0">
-                        <li style="padding:.5rem 0;color:var(--gray-300)">✓ Everything in Founder</li>
-                        <li style="padding:.5rem 0;color:var(--gray-300)">✓ Advanced AI analysis</li>
-                        <li style="padding:.5rem 0;color:var(--gray-300)">✓ Team collaboration</li>
-                        <li style="padding:.5rem 0;color:var(--gray-300)">✓ Priority support</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <button class="secondary" onclick="closePlanModal()" style="width:100%;padding:1.2rem">Cancel</button>
-        </div>
-    </div>
-
-    <div class="modal" id="planModal">
-        <div class="modal-content">
-            <h3>Choose Your Plan</h3>
-            <p style="color:var(--gray-400);margin-bottom:3rem;font-size:1.1rem">14-day free trial on both plans • Cancel anytime</p>
-            
-            <div style="display:flex;gap:2rem;margin-bottom:2rem;flex-wrap:wrap">
-                <div onclick="selectPlan('Founder')" style="flex:1;min-width:250px;padding:2.5rem 2rem;border:3px solid rgba(212,175,55,.3);border-radius:20px;cursor:pointer;transition:all .3s;background:rgba(255,255,255,.03)" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(212,175,55,.1)'" onmouseout="this.style.borderColor='rgba(212,175,55,.3)';this.style.background='rgba(255,255,255,.03)'">
-                    <div style="font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:.5rem">Founder</div>
-                    <div style="font-size:3rem;font-weight:900;margin-bottom:.5rem">$49<span style="font-size:1.2rem;color:var(--gray-500)">/mo</span></div>
-                    <div style="color:var(--gray-400);font-size:.95rem">Perfect for solo founders</div>
-                </div>
-                
-                <div onclick="selectPlan('Pro')" style="flex:1;min-width:250px;padding:2.5rem 2rem;border:3px solid var(--gold);border-radius:20px;cursor:pointer;transition:all .3s;background:linear-gradient(135deg,rgba(212,175,55,.15) 0%,rgba(212,175,55,.05) 100%);position:relative" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 10px 30px rgba(212,175,55,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="position:absolute;top:-12px;right:20px;background:var(--gold);color:var(--black);padding:.3rem 1rem;border-radius:20px;font-size:.75rem;font-weight:900;text-transform:uppercase">Popular</div>
-                    <div style="font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:.5rem">Pro</div>
-                    <div style="font-size:3rem;font-weight:900;margin-bottom:.5rem">$99<span style="font-size:1.2rem;color:var(--gray-500)">/mo</span></div>
-                    <div style="color:var(--gray-400);font-size:.95rem">For teams & growth</div>
-                </div>
-            </div>
-            
-            <button class="manage-billing-btn" onclick="closePlanModal()" style="width:100%;margin-top:1rem">Cancel</button>
-        </div>
-    </div>
-
     <div class="modal" id="signupModal">
         <div class="modal-content">
             <h3>Start Your Free Trial</h3>
