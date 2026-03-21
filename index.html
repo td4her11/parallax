@@ -276,10 +276,26 @@
                 trialBtnNote.style.display = 'none';
                 cancelTrialBtn.style.display = 'none';
             } else if (profile.subscription_status === 'trialing' && profile.stripe_customer_id) {
-                badge.textContent = 'Free Trial - 7 Days Remaining';
+                // Calculate days remaining dynamically
+                let daysRemaining = 7;
+                if (profile.trial_started_at) {
+                    const trialStart = new Date(profile.trial_started_at);
+                    const now = new Date();
+                    const daysPassed = Math.floor((now - trialStart) / (1000 * 60 * 60 * 24));
+                    daysRemaining = Math.max(0, 7 - daysPassed);
+                }
+                
+                badge.textContent = `Free Trial - ${daysRemaining} Day${daysRemaining !== 1 ? 's' : ''} Remaining`;
                 billingCard.style.display = 'block';
                 currentPlanEl.textContent = `${profile.tier} (Trial)`;
                 statusEl.textContent = 'Trial Active';
+                
+                // Update trial info text with dynamic days
+                const trialInfo = document.getElementById('trial-info');
+                if (trialInfo) {
+                    trialInfo.textContent = `Trial Active: ${daysRemaining} day${daysRemaining !== 1 ? 's' : ''} remaining • You won't be charged until day ${8 - (7 - daysRemaining)} unless you cancel`;
+                }
+                
                 trialBtn.style.display = 'none';
                 trialBtnNote.style.display = 'none';
                 cancelTrialBtn.style.display = 'inline-block';
