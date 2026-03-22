@@ -515,7 +515,31 @@
         async function analyzeDecision(decisionId, decisionText) {
             try {
                 const { data: { session } } = await supabaseClient.auth.getSession();
-                const response = await fetch(`${SUPABASE_URL}/functions/v1/analyze-decision`, { method: 'POST', headers: { 'Authorization': `Bearer ${session.access_token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ decision_text: decisionText, user_id: currentUser.id }) });
+                
+                if (!session) {
+                    console.error('No active session - user must be logged in');
+                    return;
+                }
+                
+                const response = await fetch(`${SUPABASE_URL}/functions/v1/analyze-decision`, { 
+                    method: 'POST', 
+                    headers: { 
+                        'Authorization': `Bearer ${session.access_token}`, 
+                        'Content-Type': 'application/json',
+                        'apikey': SUPABASE_ANON_KEY
+                    }, 
+                    body: JSON.stringify({ 
+                        decision_text: decisionText, 
+                        user_id: currentUser.id 
+                    }) 
+                });
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    console.error('Analysis API error:', error);
+                    return;
+                }
+                
                 const result = await response.json();
                 if (result.analysis) {
                     await supabaseClient.from('decisions').update({ ai_analysis: result.analysis }).eq('id', decisionId);
