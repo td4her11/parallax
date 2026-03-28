@@ -98,7 +98,7 @@
                 <h1>Welcome back, <span id="user-name-display">Friend</span></h1>
                 <p style="font-size:1.3rem;color:var(--gray-300);margin-bottom:1rem">Ready to see what you can't see?</p>
                 <div class="subscription-badge" id="subscription-badge">Pro Plan - Active</div>
-                <button class="cta-primary" id="start-trial-btn" style="display:none;margin-top:2rem" onclick="openSignup()">
+                <button class="cta-primary" id="start-trial-btn" style="display:none;margin-top:2rem" onclick="startCheckout()">
                     Start Your 7-Day Free Trial
                 </button>
                 <p id="trial-btn-note" style="display:none;margin-top:1rem;color:var(--gray-500);font-size:0.95rem;text-align:center">Card required • Cancel anytime before day 7 = $0 charged</p>
@@ -362,6 +362,7 @@
                     email: email,
                     password: password,
                     options: {
+                        emailRedirectTo: window.location.origin,
                         data: {
                             name: name,
                             tier: currentTier
@@ -373,10 +374,16 @@
                 
                 closeModal();
                 
-                // Wait for auth state to update, then go to Stripe checkout
-                setTimeout(async () => {
-                    await startTrial();
-                }, 1000);
+                // Check if email confirmation is required
+                if (data.user && !data.session) {
+                    // Email confirmation enabled - user must verify email first
+                    alert('✅ Account created! Please check your email to verify your account.\n\nAfter verifying, log in to start your 7-day free trial.');
+                } else if (data.session) {
+                    // Email confirmation disabled OR auto-confirm enabled - user is logged in
+                    setTimeout(async () => {
+                        await startTrial();
+                    }, 1000);
+                }
                 
             } catch (error) {
                 console.error('Signup error:', error);
@@ -447,6 +454,11 @@
         async function selectPlan(tier) {
             // Only one tier now - just open signup
             openSignup();
+        }
+        
+        async function startCheckout() {
+            // Alias for startTrial - used by dashboard CTA
+            await startTrial();
         }
         
         async function startTrial() {
@@ -618,7 +630,44 @@
         }
         
         function validateEmail(email) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            // Basic format check
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                return false;
+            }
+            
+            // Extract domain
+            const domain = email.split('@')[1].toLowerCase();
+            
+            // Block obviously fake domains
+            const fakeDomains = [
+                'test.com', 'example.com', 'fake.com', 'demo.com',
+                'tempmail.com', 'guerrillamail.com', 'mailinator.com',
+                '10minutemail.com', 'throwaway.email', 'getnada.com',
+                'temp-mail.org', 'maildrop.cc', 'sharklasers.com'
+            ];
+            
+            if (fakeDomains.includes(domain)) {
+                return false;
+            }
+            
+            // Block domains without proper TLD
+            if (!domain.includes('.')) {
+                return false;
+            }
+            
+            // Require domain to have at least 2 character TLD
+            const tld = domain.split('.').pop();
+            if (tld.length < 2) {
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function showEmailError(message) {
+            const errorEl = document.getElementById('email-error');
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
         }
         
         function escapeHtml(text) {
